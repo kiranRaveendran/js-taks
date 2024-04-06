@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>task5</title>
+    </head>
+    <body class="bg-blue-300">
+        <div
+            class="main h-[100vh] w-full bg-blue-300 flex justify-center items-center">
+            <form action id="form"
+                class="w-[10vw] h-[70vh] flex flex-col gap-7 justify-center items-center border border-white w-[40vw] h-[50vh] bg-blue-100 rounded-lg ">
+                <h1>Register</h1>
+                <div class="input_group  w-full px-5">
+                    <label class for="username">Username</label>
+                    <input class="w-full" type="text" id="username"
+                        name="username">
+                    <div class="error bg-red-300"></div>
+                </div>
+                <div class="input_group w-full px-5">
+                    <label class=" " for="email">User Email </label>
+                    <input class="w-full" type="text" id="email" name="email">
+                    <div class="error bg-red-300"></div>
+                </div>
+                <div class="input_group w-full px-5">
+                    <label class for="password">password</label>
+                    <input class="w-full" type="text" id="password"
+                        name="password">
+                    <div class="error bg-red-300"></div>
+                </div>
+                <div class="input_group w-full px-5">
+                    <label class for="cpassword">Conform password</label>
+                    <input class="w-full" type="text" id="cpassword"
+                        name="cpassword">
+                    <div class="error bg-red-300"></div>
+                </div>
+                <button type="submit"
+                    class="bg-green-400 rounded-lg px-5 py-2">Register</button>
+            </form>
+
+        </div>
+
+        <script>
+        const form=document.querySelector('#form')
+        const email=document.querySelector('#email')
+        const username=document.querySelector('#username')
+        const password=document.querySelector('#password')
+        const cpassword=document.querySelector('#cpassword')
+
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            validateinputs();
+        })
+        function validateinputs(){
+            const usernameval=username.value.trim()
+            const emailval=email.value.trim()
+            const passwordval=password.value.trim()
+            const cpasswordval=cpassword.value.trim()
+
+        if (usernameval===''){
+            setError(username,'User name is required')
+        }
+        else{
+        setSuccess(username)}
+
+        if(emailval===''){
+            setError(email,'Email is required')
+        }
+        else if(!validateEmail(emailval)){
+            setError(email,'Please enter a valid email')
+}
+        else{
+            setSuccess(email)
+        }
+        if(passwordval === ''){
+            setError(password,'Password is required')
+        }
+        else if(passwordval.length<8){
+            setError(password,'Password must be atleast 8 charaters long')
+        }
+        else{
+            setSuccess(password)
+        }
+        if (cpasswordval=== ''){
+            setError(cpassword,'Confirm password is required')
+        }
+        else if(cpasswordval !==passwordval){
+            setError(cpassword,'Password is not matching')
+        }
+        else{
+            setSuccess(password)
+        }
+}
+        function setError(element,message){
+            const inputgroup=element.parentElement;
+            const errorElement= inputgroup.querySelector('.error')
+            errorElement.innerText=message;
+            inputgroup.classList.add('error')
+            inputgroup.classList.remove('success')
+        }
+        function setSuccess(element){
+            const inputgroup=element.parentElement;
+            const errorElement= inputGroup.querySelector('.error')
+            errorElement.innerText='';
+            inputgroup.classList.add('success')
+            inputgroup.classList.remove('error')
+        }
+        function validateEmail(email){
+            return  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+    </script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!-- 6.create a tabbed interface where clicking on tabs display different content sections without page reload  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Task6</title>
+</head>
+<body class="flex justify-center items-center h-[100vh]">
+    <div class="main bg-gray-300 h-[50vh] w-[40vw] text-center flex flex-col justify-center items-center rounded-lg ">
+    <div class="buttons">
+        <button class="bg-blue-400 px-3 py-2 rounded-md" onclick="Home()">Home</button>
+        <button class="bg-blue-400 px-3 py-2 rounded-md" onclick="About()">About</button>
+        <button class="bg-blue-400 px-3 py-2 rounded-md" onclick="Contact()">Contact</button>
+</div>
+<div class="Content_bo mt-7 px-3">
+    <p id="data_box" class="cdata border border-black px-5 py-5">Content box</p>
+</div>
+
+</div>
+
+<script>
+var data=document.querySelector('.cdata')
+let content=document.querySelector('.Content_bo')
+let data1="A home, or domicile, is a space used as a permanent or semi-permanent residence for one or more human occupants, and sometimes various companion animals. It is a fully- or semi-sheltered space and can have both interior and exterior aspects to it.";
+let data2="A definition is a statement of the meaning of a term. Definitions can be classified into two large categories: intensional definitions, and extensional definitions.";
+let data3="the place on your mobile phone or computer where you store people's names, telephone numbers, addresses, etc.: Click the icon to go to contacts. I've added her to my contacts. Do you have a number for Paul? He's not in my contacts";
+
+function Home(){
+    data.innerHTML=data1
+    document.body.Content_bo.appendChild(data)
+}
+
+function About(){
+data.innerHTML=data2
+document.body.data_box.appendChild(data)
+}
+function Contact(){
+    data.innerHTML=data3
+    document.body.Content_bo.appendChild(data)
+}
+
+</script>
+</body>
+</html>

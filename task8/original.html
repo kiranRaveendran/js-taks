@@ -1,0 +1,106 @@
+<!-- 8.create a searchbar that displays live search results as users type,
+updating the results without requiring a full page reload  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+
+<title>Live Search</title>
+<style>
+  /* Style for search bar */
+  #search-bar {
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  /* Style for search results */
+  #search-results {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #search-results li {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  #search-results li:hover {
+    background-color: #f4f4f4;
+  }
+</style>
+</head>
+<body class="bg-yellow-400  ">
+<div class="  ">
+<!-- Search bar -->
+<input type="text" id="search-bar" placeholder="Search...">
+
+<!-- Search results -->
+<ul id="search-results"></ul>
+</div>
+
+
+
+<script>
+  // Function to fetch search results from the server
+  function fetchSearchResults(query) {
+    // Here you can implement your logic to fetch search results from the server
+    // For this example, I'm just returning some dummy data
+    const dummyData = [
+      "Search result 1",
+      "Search result 2",
+      "Search result 3",
+      "Search result 4",
+      "Search result 5",
+      "google",
+      "giving data",
+      "kerla",
+      "india",
+      "people",
+      "music",
+      "visual system",
+      "demonstrations",
+      "communication",
+      "english"
+
+    ];
+
+    // Simulating an asynchronous operation with setTimeout
+    setTimeout(() => {
+      const filteredResults = dummyData.filter(result => result.toLowerCase().includes(query.toLowerCase()));
+      displaySearchResults(filteredResults);
+    }, 300);
+  }
+
+  // Function to display search results
+  function displaySearchResults(results) {
+    const searchResultsElement = document.getElementById('search-results');
+    searchResultsElement.innerHTML = '';
+
+    results.forEach(result => {
+      const li = document.createElement('li');
+      li.textContent = result;
+      searchResultsElement.appendChild(li);
+    });
+  }
+  // Event listener for keyup event on search bar
+  document.getElementById('search-bar').addEventListener('keyup', function(event) {
+    const query = event.target.value.trim();
+    if (query === '') {
+      // If search query is empty, clear search results
+      displaySearchResults([]);
+    } else {
+      // Fetch and display search results
+      fetchSearchResults(query);
+    }
+  }); 
+</script>
+
+</body>
+</html>

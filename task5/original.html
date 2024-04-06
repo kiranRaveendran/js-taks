@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="flex justify-center items-center h-[100vh]">
+    <div class="main bg-red-200 h-[40vh] w-[40vw] text-center flex flex-col justify-center items-center rounded-lg ">
+    <div id="timer">00:00:00</div>
+    <button class="bg-blue-400 px-3 py-2" onclick="startTimer()">Start Timer</button>
+</div>
+    <script>
+        function startTimer() {
+            var timerDisplay = document.getElementById("timer");
+            var startTime = Date.now();
+
+            function updateTimer() {
+                var currentTime = Date.now();
+                var elapsedTime = currentTime - startTime;
+
+                var hours = Math.floor(elapsedTime / 3600000);
+                var minutes = Math.floor((elapsedTime % 3600000) / 60000);
+                var seconds = Math.floor((elapsedTime % 60000) / 1000);
+
+                hours = (hours < 10) ? "0" + hours : hours;
+                minutes = (minutes < 10) ? "0" + minutes : minutes;
+                seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+                timerDisplay.innerHTML = hours + ":" + minutes + ":" + seconds;
+            }
+            updateTimer(); // Update timer immediately
+            // Call updateTimer every second
+            var interval = setInterval(updateTimer, 1000);
+             
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> task 6 Dynamic List</title>
+<style>
+    button {
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+    <h2>Dynamic List</h2>
+    <input type="text" id="newItemText" placeholder="Enter new item">
+    <button onclick="addItem()">Add Item</button>
+    <button onclick="removeItem()">Remove Last Item</button>
+    <ul id="list"></ul>
+
+    <script>
+        function addItem() {
+            var newItemText = document.getElementById("newItemText").value;
+            if (newItemText.trim() === "") {
+                alert("Please enter a valid item.");
+                return;
+            }
+            var list = document.getElementById("list");
+            var newItem = document.createElement("li");
+            newItem.textContent = newItemText;
+            list.appendChild(newItem);
+            document.getElementById("newItemText").value = "";
+        }
+
+        function removeItem() {
+            var list = document.getElementById("list");
+            var items = list.getElementsByTagName("li");
+            if (items.length === 0) {
+                alert("There are no items to remove.");
+                return;
+            }
+            list.removeChild(items[items.length - 1]);
+        }
+    </script>
+</body>
+</html>
