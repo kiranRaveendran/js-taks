@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/speed.png" type="image/x-icon">
+     <script src="https://cdn.tailwindcss.com"></script>
+    <title>Text speed control</title>
+<style>
+
+ 
+
+body {
+	font-family: "sans";
+	background: #2a2a4e;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 80vh;
+	margin: 0;
+	text-align: center;
+    color: white;
+}
+
+.heading{
+    font-size: 3rem;
+}
+
+#text{
+    font-size: rem;
+}
+
+input {
+    text-align: center;
+	width: 50px;
+    outline: none;
+}
+
+</style>
+</head>
+<body>
+    <h1 class="heading text-6xl font-bold">Text Speed Control</h1>
+    <h1 id="text" class="text-4xl font-bold mt-10">30 Days of JavaScript</h1>
+    <div>
+	    <label for="speed ">Speed:</label>
+	    <input class="text-black mt-3" type="number" id="speed" value="1" min="1" max="50" step="3" />
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

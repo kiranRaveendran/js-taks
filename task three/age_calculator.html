@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Age Calculator</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+    <body class="bg-gray-900  flex flex-col items-center justify-center h-[100vh] ">
+        <div class="main_container w-[90vw]  lg:w-2/5">
+        <h1
+            class="text-center text-5xl text-white font-bold mb-10">Age
+            Calculator</h1>
+            <div class="px-2 sm:px-5 rounded-md  flex justify-between items-center justify-center bg-black h-[15vh] ">
+                <div
+                    class=" rounded-xl flex justify-between py-4 w-3/6 lg:w-[20vw] bg-white text-center ">
+                    <input type="date" id="birthdate"
+                        class=" rounded-lg w-[20vw] ">
+                </div>
+                <div class="bg-white rounded-md py-4  w-2/6 lg:w-[10vw] text-center">
+                    <button onclick="calculateAge()"
+                        class=" rounded-lg  w-[1/3] text-xs sm:text-base">Calculate
+                        Age</button>
+                </div>
+            </div>
+            
+            <!-- result -->
+            <div
+                class="text-white text-center  mt-4  py-10 flex justify-between items-center">
+                <div id="result "
+                    class="flex rounded-xl flex-col bg-black lg:text-xl w-fit sm:w-[8vw] p-3">
+                    <p id="years">-</p>
+                    <p>Year</p>
+                </div>
+                <div
+                    class="bg-black rounded-xl lg:text-xl flex flex-col w-fit sm:w-[8vw] p-3">
+                    <p id="months">-</p>
+                    <p>Months</p>
+                </div>
+                <div
+                    class=" lg:text-xl rounded-xl flex flex-col bg-black w-fit sm:w-[8vw] p-3">
+                    <p id="days">-</p>
+                    <p>Days</p>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+        function calculateAge() {
+            const birthdate = document.getElementById('birthdate').value;
+            const birthDateObj = new Date(birthdate);
+            const currentDate = new Date();
+
+            let years = currentDate.getFullYear() - birthDateObj.getFullYear();
+            let months = currentDate.getMonth() - birthDateObj.getMonth();
+            let days = currentDate.getDate() - birthDateObj.getDate();
+
+            // Adjust for negative months
+            if (months < 0 || (months === 0 && currentDate.getDate() < birthDateObj.getDate())) {
+                years--;
+                months += 12;
+            }
+
+            // Adjust for negative days
+            if (days < 0) {
+                months--;
+                const tempDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0);
+                days += tempDate.getDate();
+            }
+
+            const yearsParagraph = document.getElementById('years');
+            const monthsParagraph = document.getElementById('months');
+            const daysParagraph = document.getElementById('days');
+
+            yearsParagraph.textContent = years  ;
+            monthsParagraph.textContent = months  ;
+            daysParagraph.textContent = days  ;
+        }
+    </script>
+    </body>
+
+</html>

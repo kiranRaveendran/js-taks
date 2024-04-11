@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        
+    </head>
+    <style>
+.rectangle{
+width: 10vw;
+height: 5vh;
+border: 1px solid black;
+
+}
+.team{
+    width: 10vw;
+    height: 5vh;
+    border: 1px solid rgb(0, 0, 0);
+    }
+.center{
+    width: 10vw;
+    height: 5vh;
+    border: 1px solid rgb(0, 0, 0);
+}
+.colorr{
+    background-color: green;
+}
+.colorrr{
+background-color: rgb(255, 115, 0);
+}
+.colo{
+background-color: rgb(218, 146, 146);
+}
+</style>
+    <body>
+        <div class="team"></div>
+        <div class="center"></div>
+        <div class="rectangle"></div>
+        <button id="add">Click me</button>
+        <button id="remove">Remove Me</button>
+        <button id="toggle">toggle</button>
+        <button id="toggle2">toggle two</button>
+        <button id="toggle3">toggle three</button>
+<script>
+
+
+let rectangle = document.querySelector(".rectangle")
+let team=document.querySelector(".team")
+let center=document.querySelector('.center')
+let add = document.querySelector("#add")
+let remove = document.querySelector("#remove")
+let toggle = document.querySelector("#toggle")  
+let toggle_two=document.querySelector('#toggle2')
+let toggle_three=document.querySelector('#toggle3')
+
+add.addEventListener("click",function(){
+    rectangle.classList.add("colorr")
+})
+remove.addEventListener("click",function(){
+    rectangle.classList.remove("colorr")
+})
+toggle.addEventListener("click",function(){
+    rectangle.classList.toggle("colorr")
+})
+toggle_two.addEventListener("click",function(){
+    team.classList.toggle('colorrr')
+})
+toggle_three.addEventListener('click',function(){
+    center.classList.toggle('colo')
+})
+    </script>
+        </body>
+    </html>
+    
